@@ -5,12 +5,38 @@
 }
 
 body{
-    display: flex;
-    color: #777;
-    align-items: center;
-    flex-direction: column;
     font-family: "Poppins", sans-serif;
-    background-color: #f5f5f5;
+    background-color: #242066;
     margin: 0;
-    min-height: 100vh;
+}
+
+.movie {
+    background-color: #38366b;
+    border-radius: 3px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    margin: 2rem;
+    width: 300px;
+}
+
+.movie img {
+    
+    width: 100%;
+}
+
+.movie-info {
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between; /* ตัวหนังสือห่างระหว่างกัน */
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 1px; /* ความห่างตัวอักษร */
+}
+
+.movie-info h3 {
+    margin: 0;
+}
+
+.movie-info span { /* กรอบครอบตัวเลขคะแนน */
+    background-color:#242066 ;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
 }
