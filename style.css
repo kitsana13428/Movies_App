@@ -45,7 +45,7 @@ header {
     border-radius: 3px;
     overflow: hidden; /* สิ่งที่เกินออก จะทำการซ่อน*/
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-    margin: 1rem;
+    margin: 2.9rem;
     width: 300px;
     position: relative;
 }
