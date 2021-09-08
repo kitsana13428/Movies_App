@@ -3,21 +3,21 @@ const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.d
 const IMGPATH ='https://image.tmdb.org/t/p/w1280/';
 const SEARCHAPI =  "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
-const main = document.querySelector("main");
-const form = document.querySelector("form");
-const search = document.querySelector("search");
+const main = document.getElementById("main");
+const form = document.getElementById("form");
+const search = document.getElementById("search");
 
-getMovies();
+getMovies(APIURL);
 
-async function getMovies() { //ฟังก์ชั่นดึง API
-    const resp = await fetch(APIURL);
+async function getMovies(url) { //ฟังก์ชั่นดึง API
+    const resp = await fetch(url);
     const respData = await resp.json();
 
-    showMovies(respData.results)
+    showMovies(respData.results) 
 
 }
 
-function showMovies(movies) {
+function showMovies(movies) { //ดึงข้อมูลหนังออกมา
     //เคลียหน้าหลัก
     main.innerHTML = '';
 
@@ -42,6 +42,7 @@ function showMovies(movies) {
     });
 }
 
+
 function getClassByRate(vote) {
     if (vote >= 8) {
         return "green";
@@ -55,7 +56,13 @@ function getClassByRate(vote) {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const searchTerm = search.value;
+    const searchTerm = search.value; //ตัวแปรปุ่มค้นหา
+
+    if(searchTerm) { //ค้นหาโดยการดึง Api มาใช้
+        getMovies(SEARCHAPI + searchTerm);
+
+        search.value = '';
+    }
 });
 
 //5.17
