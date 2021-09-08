@@ -1,16 +1,27 @@
 const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1"; //API Movie
 
 const IMGPATH ='https://image.tmdb.org/t/p/w1280/';
+const SEARCHAPI =  "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
-const main = document.querySelector('main');
+const main = document.querySelector("main");
+const form = document.querySelector("form");
+const search = document.querySelector("search");
+
+getMovies();
 
 async function getMovies() { //ฟังก์ชั่นดึง API
     const resp = await fetch(APIURL);
     const respData = await resp.json();
 
-    console.log(respData);
+    showMovies(respData.results)
 
-    respData.results.forEach(movie => {
+}
+
+function showMovies(movies) {
+    //เคลียหน้าหลัก
+    main.innerHTML = '';
+
+    movies.forEach(movie => {
         const { poster_path, title, vote_average} = movie;
 
         const movieEl = document.createElement('div');
@@ -29,8 +40,6 @@ async function getMovies() { //ฟังก์ชั่นดึง API
 
         main.appendChild(movieEl);
     });
-
-    return respData;
 }
 
 function getClassByRate(vote) {
@@ -43,6 +52,10 @@ function getClassByRate(vote) {
     }
 }
 
-getMovies();
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const searchTerm = search.value;
+});
 
 //5.17
