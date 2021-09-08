@@ -22,7 +22,7 @@ function showMovies(movies) { //ดึงข้อมูลหนังออก
     main.innerHTML = '';
 
     movies.forEach(movie => {
-        const { poster_path, title, vote_average} = movie;
+        const { poster_path, title, vote_average, overview} = movie;
 
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
@@ -36,6 +36,7 @@ function showMovies(movies) { //ดึงข้อมูลหนังออก
                 <h3>${title}</h3>
                 <span class="${getClassByRate(vote_average)}">${vote_average}</span>
             </div>
+            <div class="overview"> <h3>Overview :</h3>${overview}</div> 
         `;
 
         main.appendChild(movieEl);

@@ -47,6 +47,7 @@ header {
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
     margin: 1rem;
     width: 300px;
+    position: relative;
 }
 
 .movie img {
@@ -84,4 +85,28 @@ header {
 
 .movie-info span.red {
     color: red;
+}
+
+.overview {
+    background-color: rgb(68, 67, 75);
+    color: #eee;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-height: 100%;
+    overflow: auto; /* เนื้อหายาว สามารถเลื่อนดูได้ */
+    transform: translateY(101%); /* ให้ตัวหนังสือซ่อนข้างหลังรูป */
+    
+}
+
+.overview h3 {
+    margin-top: 0;
+}
+
+.movie:hover .overview { /* เอาเมาส์ไปชี้ */
+    transform: translateY(0); /* เมื่อเมาส์ไปชี้จะโชว์ข้อความ */
+    transition: transform 0.2s ease-in; /* ทำการขยับขึ้น */
 }
